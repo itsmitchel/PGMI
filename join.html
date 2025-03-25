@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Us - PGMI</title>
+    <link rel="stylesheet" href="Join.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="PGMI img/pgmi logo.png" alt="PGMI Logo">
+                    <h1 title="Province Of Grace Ministries International">PGMI</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="PGMI.HTML">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#events">Events</a></li>
+                        <li><a href="PGMI.HTML">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu"><i class="fas fa-bars"></i></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="contact-section">
+        <h2 class="roboto-font">Join Us This Sunday</h2>
+        <p>We’d love to have you! Fill out the form below, and we’ll get in touch.</p>
+        
+        <form id="contact-form" action="http://localhost:3000/save-user" method="POST">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="input-group textarea-group">
+                <i class="fas fa-comment"></i>
+                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit"><i class="fas fa-paper-plane"></i>Send Message</button>
+        </form>
+    </section>
+    <script src="Join.js"></script>
+</body>
+</html>
+
+
