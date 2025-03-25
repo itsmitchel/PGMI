@@ -43,6 +43,10 @@
                 <i class="fas fa-envelope"></i>
                 <input type="email" id="email" name="email" placeholder="Your Email" required>
             </div>
+            <div class="input-group">
+                <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('password', this)"></i>
+                <input type="password" id="password" name="password" placeholder="Your Password" required>
+            </div>
             <div class="input-group textarea-group">
                 <i class="fas fa-comment"></i>
                 <textarea id="message" name="message" placeholder="Your Message" required></textarea>
@@ -51,6 +55,7 @@
         </form>
     </section>
     <script src="Join.js"></script>
+    
 </body>
 </html>
 

@@ -118,17 +118,27 @@ p {
     }
 .input-group i { 
     position: absolute; 
-    left: 15px; 
+    left: 15px; /* Position the icon on the left */
     top: 50%; 
     transform: translateY(-50%); 
     color: #ffcc00; 
     font-size: 16px; 
+    cursor: pointer;
     transition: all 0.3s ease-in-out; 
+    z-index: 1; /* Ensure the icon stays above the input field */
+}
+.input-group input:focus, 
+.input-group textarea:focus {
+    background: #444;
+    border: 2px solid #ffcc00;
+    box-shadow: 0 0 8px rgba(255, 204, 0, 0.8);
+    transform: scale(1.02);
+    z-index: 0; /* Ensure the input field does not overlap the icon */
 }
 input, textarea { 
     width: 100%; 
     padding: 12px; 
-    padding-left: 40px; 
+    padding-left: 40px; /* Add space for the icon */
     border: none; 
     outline: none; 
     background: #333; 

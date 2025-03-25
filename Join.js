@@ -2,46 +2,43 @@ document.getElementById("contact-form").addEventListener("submit", async functio
     event.preventDefault();
     let name = document.getElementById("name").value.trim();
     let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
     let message = document.getElementById("message").value.trim();
 
-    if (name === "" || email === "" || message === "") {
+    if (name === "" || email === "" || password === "" || message === "") {
         alert("Please fill in all fields before submitting.");
     } else {
-        // Save user data to the backend
         try {
-            await fetch("http://localhost:3000/save-user", {
+            const response = await fetch("http://localhost:3000/save-user", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ name, email, message })
+                body: JSON.stringify({ name, email, password, message })
             });
 
-            // Display decorative confirmation message
-            const confirmationMessage = document.createElement("div");
-            confirmationMessage.style.position = "fixed";
-            confirmationMessage.style.top = "50%";
-            confirmationMessage.style.left = "50%";
-            confirmationMessage.style.transform = "translate(-50%, -50%)";
-            confirmationMessage.style.backgroundColor = "#fff";
-            confirmationMessage.style.color = "#333";
-            confirmationMessage.style.padding = "20px";
-            confirmationMessage.style.borderRadius = "10px";
-            confirmationMessage.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.5)";
-            confirmationMessage.style.textAlign = "center";
-            confirmationMessage.innerHTML = `
-                <h2>Thank You for Joining Us!</h2>
-                <p>We will send you an email as a confirmation.</p>
-                <p>Redirecting to the home page...</p>
-            `;
-            document.body.appendChild(confirmationMessage);
-
-            // Redirect to the home page after 3 seconds
-            setTimeout(() => {
+            if (response.ok) {
+                alert("Registration successful! Redirecting to the home page...");
                 window.location.href = "PGMI.HTML";
-            }, 3000);
+            } else {
+                const errorMessage = await response.text();
+                alert(errorMessage);
+            }
         } catch (error) {
+            console.error("Error submitting form:", error);
             alert("An error occurred while submitting your information. Please try again.");
         }
     }
 });
+function togglePasswordVisibility(inputId, icon) {
+    const input = document.getElementById(inputId);
+    if (input.type === "password") {
+        input.type = "text";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+    } else {
+        input.type = "password";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+    }
+}
